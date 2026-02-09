@@ -1,0 +1,20 @@
+name: Calculator CI
+
+on: [push]
+
+jobs:
+  name: Test Calulator
+
+  runs-on: ubuntu-latest
+
+  steps:
+    - name: 📥 Загружаем код
+      uses: actions/checkout@v3
+
+    - name: 🐘 Настраиваем PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+    - name: 🧪 Запускаем тесты калькулятора
+        run: php tests/CalculatorTest.php
