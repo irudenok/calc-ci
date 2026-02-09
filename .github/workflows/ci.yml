@@ -16,5 +16,11 @@ jobs:
         with:
           php-version: '8.1'
 
+      - name: 📦 Установка зависимостей Composer
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: 🔍 Проверка качества кода (PHPStan)
+        run: vendor/bin/phpstan analyse src/ --level=9
+
       - name: 🧪 Запускаем тесты калькулятора
         run: php tests/CalculatorTest.php
